@@ -60,5 +60,3 @@ function onFormsInputsClick(e) {
 form.addEventListener('submit', onSubmitBtn);
 window.addEventListener('load', afterPageLoadEnd);
 form.addEventListener('input', throttle(onFormsInputsClick, 500));
-
-// =)
