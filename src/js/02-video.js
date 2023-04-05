@@ -15,3 +15,4 @@ if (localStorage.getItem(CURRENT_TIME) !== null) {
 }
 
 player.on('timeupdate', throttle(onPlay, 1000));
+
