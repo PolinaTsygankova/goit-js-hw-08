@@ -15,23 +15,6 @@ const data = {
   message: '',
 };
 
-function onSubmitBtn(e) {
-  e.preventDefault();
-
-  if (localStorage.getItem(STORAGE_FORM_KEY)) {
-    const notValidData = localStorage.getItem(STORAGE_FORM_KEY);
-    const validData = JSON.parse(notValidData);
-
-    console.log(validData);
-
-    emailInput.value = '';
-    messageInput.value = '';
-    localStorage.removeItem(STORAGE_FORM_KEY);
-  } else {
-    alert('Заповність усі поля!');
-  }
-}
-
 function afterPageLoadEnd(e) {
   if (localStorage.getItem(STORAGE_FORM_KEY)) {
     const validData = JSON.parse(localStorage.getItem(STORAGE_FORM_KEY));
@@ -55,6 +38,26 @@ function onFormsInputsClick(e) {
   const jsonData = JSON.stringify(data);
   localStorage.setItem(STORAGE_FORM_KEY, jsonData);
   //   console.log(data);
+}
+
+function onSubmitBtn(e) {
+  e.preventDefault();
+
+  if (
+    (emailInput.value === '' && messageInput.value === '') ||
+    emailInput.value === '' ||
+    messageInput.value === ''
+  ) {
+    alert('Заповність усі поля!');
+  } else if (localStorage.getItem(STORAGE_FORM_KEY)) {
+    const notValidData = localStorage.getItem(STORAGE_FORM_KEY);
+    const validData = JSON.parse(notValidData);
+
+    console.log(validData);
+    emailInput.value = '';
+    messageInput.value = '';
+    localStorage.removeItem(STORAGE_FORM_KEY);
+  }
 }
 
 form.addEventListener('submit', onSubmitBtn);
