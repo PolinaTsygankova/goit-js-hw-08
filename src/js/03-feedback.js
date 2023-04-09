@@ -31,7 +31,7 @@ function onFormsInputsClick(e) {
 
   if (e.target.name === 'email') {
     data.email = eventTargetText;
-  } else {
+  } else if (e.target.name === 'message') {
     data.message = eventTargetText;
   }
 
@@ -45,8 +45,8 @@ function onSubmitBtn(e) {
 
   if (
     (emailInput.value === '' && messageInput.value === '') ||
-    emailInput.value === '' ||
-    messageInput.value === ''
+    (emailInput.value === '' ||
+    messageInput.value === '')
   ) {
     alert('Заповність усі поля!');
   } else if (localStorage.getItem(STORAGE_FORM_KEY)) {
