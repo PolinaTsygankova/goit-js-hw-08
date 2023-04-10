@@ -19,11 +19,10 @@ function afterPageLoadEnd(e) {
   if (localStorage.getItem(STORAGE_FORM_KEY)) {
     const validData = JSON.parse(localStorage.getItem(STORAGE_FORM_KEY));
 
-    // console.log(validData);
-    emailInput.value = validData.email;
-    // console.log(emailInput.value);
+
+    emailInput.value = validData.email;    
     messageInput.value = validData.message;
-    // console.log(validData.message);
+
   } else {
     return;
   }
@@ -31,16 +30,9 @@ function afterPageLoadEnd(e) {
 
 function onFormsInputsClick(e) {
   const eventTargetText = e.target.value;
-  // const eventTargetText = emailInput.value;
 
-  // console.log(e.target.name);
-  //! if (e.target.name === 'email') {
   data.email = emailInput.value;
-  // console.log(data.email);
-  //! } else if (e.target.name === 'message') {
   data.message = messageInput.value;
-  // console.log(data.message);
-  //! }
   console.log(data);
   console.log(eventTargetText);
 
